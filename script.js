@@ -116,7 +116,7 @@ function renderSingleJoke(data) {
   });
   jokeCard.innerHTML = `
     <div class="joke-icon">
-     <img src="message.svg" alt="static-icon">
+     <img src="./assets/message.svg" alt="static-icon">
     </div>
     <p class="joke-id">ID: <a href="https://api.chucknorris.io/jokes/${data.id}" target="_blank">${data.id}</a></p>
     <p class="joke-text">${data.value}</p>
@@ -157,7 +157,7 @@ function renderFavJokes() {
     jokeCard.dataset.id = joke.id;
     jokeCard.innerHTML = `
       <div class="joke-icon">
-        <img src="message.svg" alt="static-icon">
+        <img src="./assets/message.svg" alt="static-icon">
       </div>
       <p class="joke-id">ID: <a href="https://api.chucknorris.io/jokes/${joke.id}" target="_blank">${joke.id}</a></p>
       <p class="joke-text">${joke.value}</p>
