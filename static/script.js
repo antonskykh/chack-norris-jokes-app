@@ -12,22 +12,22 @@ const favsWrapper = document.querySelector(".favs-wrapper");
 const randomJokeUrl = "https://api.chucknorris.io/jokes/random";
 
 let categoryJokeUrl = "";
-let searchQuery = "";
+let searchQueryUrl = "";
 let emptyCategoryError = document.querySelector(".empty-category");
 let emptyTextError = document.querySelector(".empty-text");
 let jokesData = [];
 let favJokes = JSON.parse(localStorage.getItem("favourite-jokes")) ?
   JSON.parse(localStorage.getItem("favourite-jokes")) : [];
 
-fetchCategories();
+fetchJokesCategories();
 renderFavJokes();
-attachListeners();
+attachEventListeners();
 
-function fetchCategories() {
+function fetchJokesCategories() {
   fetch("https://api.chucknorris.io/jokes/categories")
     .then(response => response.json())
     .then(data => {
-      renderCategories(data);
+      renderJokesCategories(data);
     });
 }
 
@@ -58,8 +58,8 @@ function fetchCategoryJoke() {
   }
 }
 
-function fetchQueryJoke() {
-  fetch(searchQuery)
+function fetchQueryJoke(url = searchQueryUrl) {
+  fetch(url)
     .then(response => response.json())
     .then(data => {
       renderMultipleJokes(data);
@@ -84,18 +84,19 @@ function handleSearchSubmit() {
     emptyTextError.remove();
     emptyTextError = null;
   }
-  searchQuery = `https://api.chucknorris.io/jokes/search?query=${inputField.value}`;
+  searchQueryUrl = `https://api.chucknorris.io/jokes/search?query=${inputField.value}`;
   fetchQueryJoke();
   inputField.value = "";
 }
 
+// Helper function to count time from `updated_at` till current moment
 function substractHours(pastDate) {
   let delta = (new Date().getTime() - new Date(pastDate.replace(/ /g, "T")).getTime()) / 1000;
   delta /= (60 * 60);
   return Math.abs(Math.round(delta));
 }
 
-function renderCategories(data) {
+function renderJokesCategories(data) {
   data.forEach((category) => {
     categoriesWrapper.innerHTML += `
       <span class="category-tag" data-name="${category}">${category}</span>
@@ -111,7 +112,7 @@ function renderSingleJoke(data) {
   let buttonClass = "favourite-heart";
   favJokes.forEach(joke => {
     if (data.id === joke.id) {
-      buttonClass = "favourite-heart is-favourite"
+      buttonClass = "favourite-heart is-favourite";
     }
   });
   jokeCard.innerHTML = `
@@ -132,14 +133,14 @@ function renderSingleJoke(data) {
 }
 
 function renderMultipleJokes(data) {
-  const notFoundError = document.createElement("div");
-  notFoundError.classList.add("not-found");
+  const notFoundMessage = document.createElement("div");
+  notFoundMessage.classList.add("not-found");
   jokesWrapper.innerHTML = ``;
   if (data.result.length === 0) {
-    notFoundError.innerHTML = `
+    notFoundMessage.innerHTML = `
       <p>Joke is not found. Please try another query.</p>
     `;
-    jokesWrapper.appendChild(notFoundError);
+    jokesWrapper.appendChild(notFoundMessage);
   } else {
     data.result.forEach(joke => {
       renderSingleJoke(joke);
@@ -205,8 +206,7 @@ function removeFavJoke(button) {
           const jokeCardFavButton = jokeCard.querySelector("button");
           jokeCardFavButton.classList.remove("is-favourite");
         }
-        const index = favJokes.indexOf(joke);
-        favJokes.splice(index, 1);
+        favJokes.splice(favJokes.indexOf(joke), 1);
         localStorage.setItem("favourite-jokes", JSON.stringify(favJokes));
         renderFavJokes();
       }
@@ -214,7 +214,8 @@ function removeFavJoke(button) {
   });
 }
 
-function resetFields(event) {
+// Function to reset chosen categories, search input field and clear error messages
+function resetMainUi(event) {
   if (event.target.value === "random" || event.target.value === "categories") {
     inputField.value = "";
     if (emptyTextError) {
@@ -235,15 +236,17 @@ function resetFields(event) {
   }
 }
 
-function attachListeners() {
-  randomInput.addEventListener("click", event => resetFields(event));
-  categoriesInput.addEventListener("click", event => resetFields(event));
-  searchInput.addEventListener("click", event => resetFields(event));
-  
+function attachEventListeners() {
+  randomInput.addEventListener("click", event => resetMainUi(event));
+
+  categoriesInput.addEventListener("click", event => resetMainUi(event));
+
+  searchInput.addEventListener("click", event => resetMainUi(event));
+
   favJokesToggler.addEventListener("click", () => {
     main.classList.toggle("handle-overflow");
   });
-  
+
   categoriesWrapper.addEventListener("click", event => {
     event.stopPropagation();
     if (event.target.classList.value === "category-tag") {
@@ -263,7 +266,7 @@ function attachListeners() {
       });
     }
   });
-  
+
   form.addEventListener("submit", event => {
     event.preventDefault();
     const inputs = form.querySelectorAll(".radio-input");
@@ -277,11 +280,10 @@ function attachListeners() {
             fetchCategoryJoke();
             break;
           case "search":
-            handleSearchSubmit()
+            handleSearchSubmit();
             break;
         }
       }
     });
   });
 }
-
