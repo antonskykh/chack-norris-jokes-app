@@ -1,0 +1,488 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 2 version
+*/
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+button {
+  background: none;
+  border-style: none;
+  cursor: pointer;
+}
+
+/* General styling */
+body {
+  font-family: Roboto, Helvetica, sans-serif;
+  color: #333333;
+}
+
+main {
+  height: 100%;
+  padding: 20px;
+}
+
+aside {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  padding: 88px 0 20px;
+  background-color: #F8F8F8;
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
+}
+
+h1 {
+  margin-bottom: 80px;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+h3 {
+  font-size: 32px;
+  line-height: 44px;
+}
+
+form {
+  margin-bottom: 40px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: none;
+}
+
+.handle-overflow {
+  overflow: hidden;
+}
+
+.wrapper {
+  position: relative;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.introduction {
+  margin-bottom: 38px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 44px;
+}
+
+.favs-heading {
+  display: none;
+}
+
+.toggler-label {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding-left: 40px;
+  font-size: 20px;
+  line-height: 28px;
+  color: #ABABAB;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.toggler-label::before,
+.fav-jokes-toggler:checked~.toggler-label::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+}
+
+.toggler-label::before {
+  background: url("toggler_label_off.svg") no-repeat left center transparent;
+}
+
+.fav-jokes-toggler:checked~.toggler-label::before {
+  background: url("toggler_label_on.svg") no-repeat left center transparent;
+}
+
+.fav-jokes-toggler:checked~aside {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.random-label,
+.categories-label,
+.search-label {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 10px;
+  padding-left: 35px;
+  font-size: 18px;
+  line-height: 26px;
+  cursor: pointer;
+}
+
+.random-label::before,
+.categories-label::before,
+.search-label::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 0px;
+  border: 2px solid #ABABAB;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+}
+
+.random-label:hover::before,
+.categories-label:hover::before,
+.search-label:hover::before {
+  border: 2px solid #333333;
+}
+
+.random:checked~.random-label::before,
+.categories:checked~.categories-label::before,
+.search:checked~.search-label::before {
+  border: 2px solid #333333;
+}
+
+.random:checked~.random-label::after,
+.categories:checked~.categories-label::after,
+.search:checked~.search-label::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 5px;
+  background-color: #333333;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+}
+
+.categories-wrapper {
+  display: none;
+}
+
+.categories:checked~.categories-wrapper {
+  display: block;
+  margin: 10px 0 20px;
+}
+
+.category-tag {
+  display: inline-block;
+  margin: 3px;
+  border: 2px solid #F8F8F8;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ABABAB;
+}
+
+.category-tag:hover {
+  cursor: pointer;
+}
+
+.is-active {
+  background-color: #F8F8F8;
+  color: #333333;
+}
+
+.search-wrapper {
+  display: none;
+}
+
+.search:checked~.search-wrapper {
+  display: block;
+  margin: 15px 0;
+}
+
+.input-field {
+  width: 100%;
+  border: 2px solid #333333;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+::-webkit-input-placeholder {
+  color: #ABABAB;
+  opacity: 1;
+}
+
+::-moz-placeholder {
+  color: #ABABAB;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: #ABABAB;
+  opacity: 1;
+}
+
+::-ms-input-placeholder {
+  color: #ABABAB;
+  opacity: 1;
+}
+
+::placeholder {
+  color: #ABABAB;
+  opacity: 1;
+}
+
+.empty-category,
+.empty-text {
+  font-size: 14px;
+  line-height: 20px;
+  color: #FF6767;
+}
+
+.not-found {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.submit-button {
+  background: linear-gradient(92.01deg, #8EA7FF 0%, #7291FF 100%);
+  margin-top: 20px;
+  border-radius: 10px;
+  padding: 10px 40px;
+  font-size: 16px;
+  line-height: 22px;
+  color: #FFFFFF;
+}
+
+.joke-card {
+  position: relative;
+  background-color: #F8F8F8;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  padding: 47px 20px 20px 80px;
+}
+
+.joke-icon {
+  position: absolute;
+  top: 47px;
+  left: 20px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  padding: 11px 10px 10px;
+}
+
+.joke-icon img {
+  display: block;
+}
+
+.joke-id {
+  margin-bottom: 5px;
+  font-size: 10px;
+  line-height: 14px;
+  color: #ABABAB;
+}
+
+.joke-id a {
+  position: relative;
+  padding-right: 15px;
+  color: #8EA7FF;
+}
+
+.joke-id a::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  background: url("link.svg") no-repeat right center transparent;
+}
+
+.joke-id a:hover {
+  color: #FF6767;
+}
+
+.joke-text {
+  margin-bottom: 28px;
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.last-update {
+  font-size: 10px;
+  line-height: 14px;
+  color: #ABABAB;
+}
+
+.joke-category {
+  display: inline-block;
+  background-color: #FFFFFF;
+  margin-top: 10px;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 10px;
+  line-height: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.favourite-heart {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: url("heart_empty.svg") no-repeat center transparent;
+  padding: 10px;
+}
+
+.is-favourite {
+  background: url("heart_filled.svg") no-repeat center transparent;
+}
+
+.favs-wrapper {
+  max-height: calc(100vh - 88px);
+  padding: 0 20px;
+  overflow-y: auto;
+}
+
+.fav-joke-card {
+  position: relative;
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 47px 20px 20px 80px;
+}
+
+.fav-joke-card .joke-icon {
+  background-color: #F8F8F8;
+}
+
+.fav-joke-card .joke-text {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@media (min-width: 768px) {
+  main {
+    position: relative;
+    width: 100%;
+    padding: 40px;
+  }
+
+  main::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    -webkit-transition: -webkit-transform 1s;
+    transition: -webkit-transform 1s;
+    transition: transform 1s;
+    transition: transform 1s, -webkit-transform 1s;
+  }
+
+  aside {
+    width: 480px;
+    padding: 88px 0 40px;
+  }
+
+  .wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .fav-jokes-toggler:checked~main::after {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+
+  .toggler-label {
+    top: 40px;
+    right: 40px;
+  }
+
+  .joke-card {
+    padding: 67px 40px 40px 100px;
+  }
+
+  .joke-card .joke-icon {
+    top: 67px;
+    left: 40px;
+  }
+
+  .card-bottom {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: baseline;
+    -ms-flex-align: baseline;
+    align-items: baseline;
+  }
+
+  .joke-card .favourite-heart {
+    top: 40px;
+    right: 40px;
+  }
+
+  .favs-wrapper {
+    padding: 0 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  main {
+    width: 65%;
+    padding: 40px 140px;
+    overflow-y: auto;
+  }
+
+  main::after {
+    display: none;
+  }
+
+  aside {
+    width: 35%;
+    padding: 40px 0;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+
+  .handle-overflow {
+    overflow-y: auto;
+  }
+
+  .toggler-label {
+    display: none;
+  }
+
+  .favs-heading {
+    display: block;
+    margin: 0 40px 20px;
+    font-size: 20px;
+    line-height: 28px;
+    color: #ABABAB;
+  }
+}

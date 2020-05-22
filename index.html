@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chack Norris Jokes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <input type="checkbox" id="fav-jokes-toggler" class="fav-jokes-toggler">
+    <label for="fav-jokes-toggler" id="toggler-label" class="toggler-label">Favourite</label>
+    <main id="main">
+      <h1>MSI 2020</h1>
+      <h3>Hey!</h3>
+      <p class="introduction">Let’s try to find a joke for you:</p>
+      <form id="form">
+        <input type="radio" name="find-joke" id="random" value="random" class="random radio-input" checked>
+        <label for="random" class="random-label">Random</label><br>
+        <input type="radio" name="find-joke" id="categories" value="categories" class="categories radio-input">
+        <label for="categories" class="categories-label">From categories</label><br>
+        <div class="categories-wrapper"></div>
+        <input type="radio" name="find-joke" id="search" value="search" class="search radio-input">
+        <label for="search" class="search-label">Search</label><br>
+        <div class="search-wrapper">
+          <input type="text" placeholder="Free text search..." id="input-field" class="input-field">
+        </div>
+        <button type="submit" class="submit-button">Get a joke</button>
+      </form>
+      <div class="jokes-wrapper"></div>
+    </main>
+    <aside id="aside">
+      <p class="favs-heading">Favourite</p>
+      <div class="favs-wrapper"></div>
+    </aside>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
