@@ -110,11 +110,11 @@ input[type="checkbox"] {
 }
 
 .toggler-label::before {
-  background: url("./assets/toggler_label_off.svg") no-repeat left center transparent;
+  background: url("../assets/toggler_label_off.svg") no-repeat left center transparent;
 }
 
 .fav-jokes-toggler:checked~.toggler-label::before {
-  background: url("./assets/toggler_label_on.svg") no-repeat left center transparent;
+  background: url("../assets/toggler_label_on.svg") no-repeat left center transparent;
 }
 
 .fav-jokes-toggler:checked~aside {
@@ -309,7 +309,7 @@ input[type="checkbox"] {
   right: 0;
   width: 15px;
   height: 15px;
-  background: url("./assets/link.svg") no-repeat right center transparent;
+  background: url("../assets/link.svg") no-repeat right center transparent;
 }
 
 .joke-id a:hover {
@@ -344,12 +344,12 @@ input[type="checkbox"] {
   position: absolute;
   top: 20px;
   right: 20px;
-  background: url("./assets/heart_empty.svg") no-repeat center transparent;
+  background: url("../assets/heart_empty.svg") no-repeat center transparent;
   padding: 10px;
 }
 
 .is-favourite {
-  background: url("./assets/heart_filled.svg") no-repeat center transparent;
+  background: url("../assets/heart_filled.svg") no-repeat center transparent;
 }
 
 .favs-wrapper {
